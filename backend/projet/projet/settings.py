@@ -139,3 +139,19 @@ STATIC_DIRS = [
     os.path.join(BASE_DIR, 'build/static')
 
 ]
+
+
+# Auth with token
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+       
+    ),
+}
+
+# precision du login with email
+DJOSER = {
+    'LOGIN_FIELD':'email'
+}
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
