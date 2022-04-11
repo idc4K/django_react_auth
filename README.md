@@ -1,1 +1,3 @@
 # django_react_auth
+Système d’authentification
+Il s’agit d’un projet qui montre comment vous pouvez implémenter un système d’authentification par jeton Web JSON complet dans Django et React. Cela inclut de montrer comment implémenter des fonctionnalités telles que l’activation de compte, la réinitialisation de mot de passe et l’authentification sociale avec Google et Facebook oauth2. D’autres améliorations pour le rendre plus prêt pour la production seraient simplement d’utiliser le jeton d’actualisation pour obtenir un nouveau jeton d’accès lorsque l’application se recharge et se recharge également lorsque vous accédez à une page importante telle qu’une page de paiement, et d’avoir des alertes présentes sur le frontend pour rendre les choses plus conviviales.
