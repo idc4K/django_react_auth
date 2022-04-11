@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from django.views.generic import TemplateView
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('', include('compte.urls'))
+    # path('', include('compte.urls'))
 ]
 
 urlpatterns = [
