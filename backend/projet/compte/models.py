@@ -8,6 +8,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.contrib.auth.base_user import AbstractBaseUser
 
 from django.utils.translation import gettext_lazy as _ 
+from django.contrib.auth.validators import UnicodeUsernameValidator
 
 
 
@@ -16,18 +17,19 @@ from django.utils.translation import gettext_lazy as _
 # classe de modification de gestion des utilisateur par defaut de django
 class UserManager(BaseUserManager):
 
-    def create_user(self,email,password=None):
+    def create_user(self,email,username,password=None,**extra_fields):
         if email is None:
             raise TypeError('le mail est obligatoire')
-        user=self.model(email=self.normalize_email(email))
+        user=self.model(email=self.normalize_email(email),username=self.normalize_email(username))
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,email,password=None):
+    def create_superuser(self,email,username,password=None,**extra_fields):
         user = self.create_user(
             
             email,
+            username,
             password=password,
         )
         user.is_staff = True
@@ -46,6 +48,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    username_validator = UnicodeUsernameValidator()
     username = models.CharField(
         _('username'),
         max_length=150,
