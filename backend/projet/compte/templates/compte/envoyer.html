@@ -1,0 +1,1 @@
+{% autoescape off %} Salut {{ user.first_name }}, Cliquez sur ce lien pour confirmer votre mail http://{{ domain }}{% url 'activate' uidb64=uid token=token %} {% endautoescape %}
